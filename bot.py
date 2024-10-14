@@ -2,9 +2,14 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 
-from config import Config, load_config
-from src.handlers import echo
+from config import settings
+from src.services import LLM
+
+from src.middlewares import LLMMiddleware, ChatFilterMiddleware
+from src.handlers import router
 
 
 logger = logging.getLogger(__name__)
@@ -19,12 +24,15 @@ async def main():
 
     logger.info("Starting bot")
 
-    config: Config = load_config()
-
-    bot: Bot = Bot(token=config.tg_bot.token, parse_mode="HTML")
+    bot: Bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN))
+    me = await bot.get_me()
+    llm: LLM = LLM(me)
     dp: Dispatcher = Dispatcher()
 
-    dp.include_router(echo.router)
+    logger.info(f"Allowed chats list - {repr(settings.ALLOWED_CHATS)}")
+    dp.message.middleware(ChatFilterMiddleware(settings.ALLOWED_CHATS))
+    dp.message.middleware(LLMMiddleware(llm))
+    dp.include_router(router)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
