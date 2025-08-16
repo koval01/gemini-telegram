@@ -1,0 +1,30 @@
+aiogram~=3.21.0
+aiogram-media-group~=0.5.1
+
+aiohttp~=3.12.15
+selectolax~=0.3.33
+
+pydantic~=2.11.7
+pydantic-settings~=2.10.1
+
+google-generativeai~=0.8.5
+
+ddgs~=9.5.2
+
+pillow~=11.3.0
+lottie~=0.7.2
+cairosvg~=2.8.2
+av~=15.0.0
+dill~=0.4.0
+
+pandas~=2.3.1
+
+numpy>=2.3.2
+scikit-learn~=1.7.1
+zstandard~=0.23.0
+emoji~=2.14.1
+
+RestrictedPython==8.0
+
+# for linux (debian / ubuntu) environment
+# sudo apt-get install -y libcairo2-dev libfreetype6-dev libpng-dev
