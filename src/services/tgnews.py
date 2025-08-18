@@ -27,13 +27,14 @@ class TGNews:
         if remove_patterns is None:
             remove_patterns = [
                 r'@ecotopor',
+                r'@meduzalive',
                 r'👉 Топор Live\. Подписаться',
                 r'👉 Топор \+18\. Подписаться',
                 r'Сайт "Страна" \| X/Twitter \| Прислать новость/фото/видео \| Реклама на канале \| Помощь',
                 r'Подписаться \| Связь с редакцией\/прислать новость'
             ]
         if channels is None:
-            channels = ["ecotopor", "toporlive", "PresidentDonaldTrumpRU", "stranaua"]
+            channels = ["ecotopor", "meduzalive", "PresidentDonaldTrumpRU", "stranaua", "Ateobreaking"]
         self.host = host
         self.https = https
         self.channels = channels
