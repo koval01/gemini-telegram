@@ -55,9 +55,9 @@ class ChatFilterMiddleware(BaseMiddleware):
 
         if message and message.chat.id not in self.allowed_chat_ids:
             if isinstance(event, CallbackQuery):
-                await event.answer("Я работаю только в @tut_dalbaebi", show_alert=True)
+                await event.answer("Я не хочу с тобой говорить", show_alert=True)
             else:
-                await message.answer("Я работаю только в @tut_dalbaebi", parse_mode=None)
+                await message.answer("Я не хочу с тобой говорить", parse_mode=None)
             logging.info(f"Blocked response from chat with id: {message.chat.id}")
             return None
 
