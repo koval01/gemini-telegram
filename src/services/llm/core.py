@@ -75,7 +75,7 @@ class LLM:
         HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
     }
 
-    def __init__(self, me: User, model_name: str = "gemini-2.0-flash", api_keys: Optional[List[str]] = None) -> None:
+    def __init__(self, me: User, model_name: str = "gemini-2.5-flash", api_keys: Optional[List[str]] = None) -> None:
         self.me = me.model_dump()
         self.model_name = model_name
         self.api_keys = api_keys
